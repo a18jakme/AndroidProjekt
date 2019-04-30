@@ -1,5 +1,6 @@
 package com.example.myprojektapp;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -25,7 +27,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
-public ArrayAdapter<Disc> discadapter;
+    public ArrayAdapter<Disc> discadapter;
+    public static final String EXTRA_MESSAGE = "com.example.myprojektapp.extra.MESSAGE";
+    public static final String EXTRA_MESSAGE1 = "com.example.myprojektapp.extra.MESSAGE1";
+    public static final String EXTRA_MESSAGE2 = "com.example.myprojektapp.extra.MESSAGE2";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +41,16 @@ public ArrayAdapter<Disc> discadapter;
         discadapter=new ArrayAdapter<Disc>(this,R.layout.listtext_view,R.id.my_textview);
         ListView myListView = (ListView)findViewById(R.id.my_listview);
         myListView.setAdapter(discadapter);
+
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String discnamn = discadapter.getItem(position).toString();
+                String stabil= discadapter.getItem(position).getLocation();
+                String pris= discadapter.getItem(position).getCost();
+                message(view, discnamn, stabil,pris);
+            }
+        });
     }
 
     @Override
@@ -149,5 +164,13 @@ public ArrayAdapter<Disc> discadapter;
                 Log.e("kalas","E:"+e.getMessage());
             }
         }
+
+    }
+    public void message (View view, String discnamn, String stabil, String pris){
+        Intent iNtent = new Intent(getApplicationContext(), ActivityDetail.class);
+        iNtent.putExtra(EXTRA_MESSAGE, discnamn);
+        iNtent.putExtra(EXTRA_MESSAGE1, stabil);
+        iNtent.putExtra(EXTRA_MESSAGE2, pris);
+        startActivity(iNtent);
     }
 }
