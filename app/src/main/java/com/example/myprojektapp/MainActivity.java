@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 String discnamn = discadapter.getItem(position).toString();
                 String stabil= discadapter.getItem(position).getLocation();
                 String pris= discadapter.getItem(position).getCost();
+                Log.d("priset",pris);
                 message(view, discnamn, stabil,pris);
             }
         });
@@ -152,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < json1.length(); i++){
                     JSONObject a = json1.getJSONObject(i);
                     Disc n = new Disc(a.getString("name"));
+                    n.setCost(a.getInt("cost"));
                     n.setLocation(a.getString("location"));
 
                     discadapter.add(n);
