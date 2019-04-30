@@ -16,6 +16,14 @@ public class Disc {
         company=mTillverkare;
         category=mtyp;
     }
+    public Disc(String mName){
+        name=mName;
+        location="";
+        size=-1;
+        cost=-1;
+        company="";
+        category="";
+    }
 
     public void setLocation(String stable) {
         this.location = stable;
@@ -51,5 +59,9 @@ public class Disc {
     public String getCategory() {
         String typ = "Typ av disc: "+category;
         return typ;
+    }
+    @Override
+    public String toString() {
+        return name;
     }
 }

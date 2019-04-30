@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,7 +25,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
-
+public ArrayAdapter<Disc> discadapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        discadapter=new ArrayAdapter<Disc>(this,R.layout.listtext_view,R.id.my_textview);
+        ListView myListView = (ListView)findViewById(R.id.my_listview);
+        myListView.setAdapter(discadapter);
     }
 
     @Override
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (id == R.id.action_settings) {
+            new FetchData().execute();
+
             return true;
         }
 
@@ -70,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 // Construct the URL for the Internet service
-                URL url = new URL("http://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=brom");
+                URL url = new URL("http://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=a18jakme");
 
                 // Create the request to the PHP-service, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -123,27 +129,19 @@ public class MainActivity extends AppCompatActivity {
 
             super.onPostExecute(o);
             Log.d("jacke","DataFetched:"+o);
-            bergsadapter.clear();
-            // This code executes after we have received our data. The String object o holds
-            // the un-parsed JSON string or is null if we had an IOException during the fetch.
-
-            // Implement a parsing code that loops through the entire JSON and creates objects
-            // of our newly created Mountain class.
+            //bergsadapter.clear();
 
             try {
-// Ditt JSON-objekt som Java
-                JSONArray json1 = new JSONArray(o);
 
-// När vi har ett JSONObjekt kan vi hämta ut dess beståndsdelar
+                JSONArray json1 = new JSONArray(o);
                 for (int i = 0; i < json1.length(); i++){
                     JSONObject a = json1.getJSONObject(i);
-                    MountainClass n = new MountainClass(a.getString("name"));
-                    n.setHeight(a.getInt("size"));
+                    Disc n = new Disc(a.getString("name"));
                     n.setLocation(a.getString("location"));
 
-                    bergsadapter.add(n);
-                    //String bergsnamn = a.getString("name");
-                    Log.e("kalas",n.toString());
+                    discadapter.add(n);
+
+                    Log.d("jacke11",n.toString());
 
                 }
 
