@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 String stabil= discadapter.getItem(position).getLocation();
                 String pris= discadapter.getItem(position).getCost();
                 String tillverkare= discadapter.getItem(position).getCompany();
-                String typ= discadapter.getItem(position).getCompany();
+                String typ= discadapter.getItem(position).getCategory();
                 Log.d("priset",pris);
                 message(view, discnamn, stabil, pris, tillverkare, typ);
             }

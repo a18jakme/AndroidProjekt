@@ -39,7 +39,7 @@ public class Disc {
     }
 
     public String getCost() {
-        String pris = "Pris: " + cost;
+        String pris = "Pris: " + cost +"kr";
         return pris;
     }
 
