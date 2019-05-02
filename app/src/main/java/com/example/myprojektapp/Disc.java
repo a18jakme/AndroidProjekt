@@ -30,7 +30,7 @@ public class Disc {
     }
 
     public String getLocation() {
-        String stable = "Stabilitet: "+location;
+        String stable = location;
         return stable;
     }
 
@@ -39,7 +39,7 @@ public class Disc {
     }
 
     public String getCost() {
-        String pris = "Pris: " + cost +"kr";
+        String pris = "" + cost;
         return pris;
     }
 
@@ -48,7 +48,7 @@ public class Disc {
     }
 
     public String getCompany() {
-        String tillverkare = "Företag: "+company;
+        String tillverkare = company;
         return tillverkare;
     }
 
@@ -57,8 +57,8 @@ public class Disc {
     }
 
     public String getCategory() {
-        String typ = "Typ av disc: "+category;
-        return typ;
+        String typ = category;
+        return category;
     }
     @Override
     public String toString() {

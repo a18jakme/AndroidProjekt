@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        new FetchData().execute();
 
         discadapter=new ArrayAdapter<Disc>(this,R.layout.listtext_view,R.id.my_textview);
         ListView myListView = (ListView)findViewById(R.id.my_listview);
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (id == R.id.action_settings) {
+            discadapter.clear();
             new FetchData().execute();
 
             return true;

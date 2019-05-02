@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,13 +36,25 @@ public class ActivityDetail extends AppCompatActivity {
         TextView dname =findViewById(R.id.DiscView);
         dname.setText(discnamn);
         TextView dprice =findViewById(R.id.PriceView);
-        dprice.setText(pris);
+        dprice.setText("Pris: "+pris+"kr");
         TextView dtyp =findViewById(R.id.typeview);
-        dtyp.setText(typ);
+        dtyp.setText("Typ av disc: "+typ);
         TextView dcompany =findViewById(R.id.companyview);
-        dcompany.setText(tillverkare);
+        dcompany.setText("Företag:" +tillverkare);
         TextView dstable =findViewById(R.id.stableview);
-        dstable.setText(stabil);
+        dstable.setText("Stabilitet: "+stabil);
+
+        ImageView bild1=findViewById(R.id. bild);
+
+
+        if(typ.equals("Putt")) {
+            bild1.setImageResource(R.drawable.pinkgerb);
+
+        }
+        else if(typ.equals("Distance Driver")) {
+            bild1.setImageResource(R.drawable.pinkgerb);
+
+        }
 
 
 
