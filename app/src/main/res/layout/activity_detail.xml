@@ -44,6 +44,7 @@
                 tools:srcCompat="@tools:sample/avatars[9]" />
 
             <ListView
+                android:id="@+id/detail_listview"
                 android:layout_width="252dp"
                 android:layout_height="310dp"
                 android:layout_marginStart="8dp"

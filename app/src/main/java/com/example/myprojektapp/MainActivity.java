@@ -25,12 +25,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public ArrayAdapter<Disc> discadapter;
     public static final String EXTRA_MESSAGE = "com.example.myprojektapp.extra.MESSAGE";
     public static final String EXTRA_MESSAGE1 = "com.example.myprojektapp.extra.MESSAGE1";
     public static final String EXTRA_MESSAGE2 = "com.example.myprojektapp.extra.MESSAGE2";
+    public static final String EXTRA_MESSAGE3 = "com.example.myprojektapp.extra.MESSAGE3";
+    public static final String EXTRA_MESSAGE4 = "com.example.myprojektapp.extra.MESSAGE4";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +53,10 @@ public class MainActivity extends AppCompatActivity {
                 String discnamn = discadapter.getItem(position).toString();
                 String stabil= discadapter.getItem(position).getLocation();
                 String pris= discadapter.getItem(position).getCost();
+                String tillverkare= discadapter.getItem(position).getCompany();
+                String typ= discadapter.getItem(position).getCompany();
                 Log.d("priset",pris);
-                message(view, discnamn, stabil,pris);
+                message(view, discnamn, stabil, pris, tillverkare, typ);
             }
         });
     }
@@ -155,6 +162,9 @@ public class MainActivity extends AppCompatActivity {
                     Disc n = new Disc(a.getString("name"));
                     n.setCost(a.getInt("cost"));
                     n.setLocation(a.getString("location"));
+                    n.setCategory(a.getString("category"));
+                    n.setCompany(a.getString("company"));
+
 
                     discadapter.add(n);
 
@@ -168,11 +178,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    public void message (View view, String discnamn, String stabil, String pris){
+    public void message (View view, String discnamn, String stabil, String pris, String tillverkare, String typ){
         Intent iNtent = new Intent(getApplicationContext(), ActivityDetail.class);
         iNtent.putExtra(EXTRA_MESSAGE, discnamn);
         iNtent.putExtra(EXTRA_MESSAGE1, stabil);
         iNtent.putExtra(EXTRA_MESSAGE2, pris);
+        iNtent.putExtra(EXTRA_MESSAGE3, tillverkare);
+        iNtent.putExtra(EXTRA_MESSAGE4, typ);
         startActivity(iNtent);
     }
 }
