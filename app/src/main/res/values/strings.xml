@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GoPlayDisc</string>
     <string name="action_settings">Uppdatera</string>
+    <string name="title_activity_om">OmActivity</string>
 </resources>

@@ -75,9 +75,15 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.Uppdateraknapp) {
             discadapter.clear();
             new FetchData().execute();
+
+            return true;
+        }
+        if (id == R.id.infoknapp) {
+            Intent intent = new Intent(getApplicationContext(), OmActivity.class);
+            startActivity(intent);
 
             return true;
         }
