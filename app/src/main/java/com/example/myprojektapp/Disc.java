@@ -2,7 +2,7 @@ package com.example.myprojektapp;
 
 public class Disc {
     private String name;
-    private String location;
+    private String stable;
     private int size;
     private int cost;
     private String company;
@@ -10,7 +10,7 @@ public class Disc {
 
     public Disc (String mName, String mStable, int mTom, int mpris, String mTillverkare, String mtyp ){
         name=mName;
-        location=mStable;
+        stable=mStable;
         size=mTom;
         cost=mpris;
         company=mTillverkare;
@@ -18,7 +18,7 @@ public class Disc {
     }
     public Disc(String mName){
         name=mName;
-        location="";
+        stable="";
         size=-1;
         cost=-1;
         company="";
@@ -26,11 +26,11 @@ public class Disc {
     }
 
     public void setLocation(String stable) {
-        this.location = stable;
+        this.stable = stable;
     }
 
-    public String getLocation() {
-        String stable = location;
+    public String getStable() {
+        String mstable = stable;
         return stable;
     }
 

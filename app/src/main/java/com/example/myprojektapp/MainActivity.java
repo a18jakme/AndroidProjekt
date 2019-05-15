@@ -51,13 +51,12 @@ public class MainActivity extends AppCompatActivity {
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String discnamn = discadapter.getItem(position).toString();
-                String stabil= discadapter.getItem(position).getLocation();
-                String pris= discadapter.getItem(position).getCost();
-                String tillverkare= discadapter.getItem(position).getCompany();
-                String typ= discadapter.getItem(position).getCategory();
-                Log.d("priset",pris);
-                message(view, discnamn, stabil, pris, tillverkare, typ);
+                String discname = discadapter.getItem(position).toString();
+                String stable= discadapter.getItem(position).getStable();
+                String price= discadapter.getItem(position).getCost();
+                String company= discadapter.getItem(position).getCompany();
+                String type= discadapter.getItem(position).getCategory();
+                message(view, discname, stable, price, company, type);
             }
         });
     }
@@ -186,13 +185,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    public void message (View view, String discnamn, String stabil, String pris, String tillverkare, String typ){
+    public void message (View view, String discname, String stable, String price, String company, String type){
         Intent iNtent = new Intent(getApplicationContext(), ActivityDetail.class);
-        iNtent.putExtra(EXTRA_MESSAGE, discnamn);
-        iNtent.putExtra(EXTRA_MESSAGE1, stabil);
-        iNtent.putExtra(EXTRA_MESSAGE2, pris);
-        iNtent.putExtra(EXTRA_MESSAGE3, tillverkare);
-        iNtent.putExtra(EXTRA_MESSAGE4, typ);
+        iNtent.putExtra(EXTRA_MESSAGE, discname);
+        iNtent.putExtra(EXTRA_MESSAGE1, stable);
+        iNtent.putExtra(EXTRA_MESSAGE2, price);
+        iNtent.putExtra(EXTRA_MESSAGE3, company);
+        iNtent.putExtra(EXTRA_MESSAGE4, type);
         startActivity(iNtent);
     }
 }
