@@ -23,6 +23,13 @@ public class ActivityDetail extends AppCompatActivity {
         Intent intent = getIntent();
 
         String discname = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+        int spacePos = discname.indexOf(":");
+        if (spacePos > 0) {
+             discname= discname.substring(0, spacePos);
+        }
+
+
         String stable = intent.getStringExtra(MainActivity.EXTRA_MESSAGE1);
         String price = intent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
         String company = intent.getStringExtra(MainActivity.EXTRA_MESSAGE3);

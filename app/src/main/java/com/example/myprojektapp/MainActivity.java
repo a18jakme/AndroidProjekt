@@ -167,7 +167,26 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray json1 = new JSONArray(o);
                 for (int i = 0; i < json1.length(); i++){
                     JSONObject a = json1.getJSONObject(i);
-                    Disc n = new Disc(a.getString("name"));
+                    Disc n = new Disc(a.getString("name")+ ": " + a.getString("category") + "");
+                    n.setStable(a.getString("location"));
+                    n.setCost(a.getInt("cost"));
+                    n.setCompany(a.getString("company"));
+                    n.setType(a.getString("category"));
+                    n.setValue(a.getString("auxdata"));
+                    discadapter.add(n);
+
+
+                }
+
+            } catch (JSONException e) {
+                Log.e("kalas","E:"+e.getMessage());
+            }
+            try {
+
+                JSONArray json1 = new JSONArray(o);
+                for (int i = 0; i < json1.length(); i++){
+                    JSONObject a = json1.getJSONObject(i);
+                    Disc n = new Disc(a.getString("name")+ ": " + a.getString("category") + "");
                     n.setStable(a.getString("location"));
                     n.setCost(a.getInt("cost"));
                     n.setCompany(a.getString("company"));
@@ -192,7 +211,6 @@ public class MainActivity extends AppCompatActivity {
         iNtent.putExtra(EXTRA_MESSAGE3, company);
         iNtent.putExtra(EXTRA_MESSAGE4, type);
         iNtent.putExtra(EXTRA_MESSAGE5, value);
-
         startActivity(iNtent);
     }
 }
