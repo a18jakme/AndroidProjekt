@@ -6,15 +6,17 @@ public class Disc {
     private int size;
     private int cost;
     private String company;
-    private String category;
+    private String dtype;
+    private String value;
 
-    public Disc (String mName, String mStable, int mTom, int mpris, String mTillverkare, String mtyp ){
+    public Disc (String mName, String mStable, int mTom, int mpris, String mTillverkare, String mtyp, String mValue){
         name=mName;
         stable=mStable;
         size=mTom;
         cost=mpris;
         company=mTillverkare;
-        category=mtyp;
+        dtype=mtyp;
+        value=mValue;
     }
     public Disc(String mName){
         name=mName;
@@ -22,10 +24,11 @@ public class Disc {
         size=-1;
         cost=-1;
         company="";
-        category="";
+        dtype="";
+        value="";
     }
 
-    public void setLocation(String stable) {
+    public void setStable(String stable) {
         this.stable = stable;
     }
 
@@ -52,14 +55,24 @@ public class Disc {
         return tillverkare;
     }
 
-    public void setCategory(String typ){
-        this.category=typ;
+    public void setType(String typ){
+        this.dtype=typ;
     }
 
-    public String getCategory() {
-        String typ = category;
-        return category;
+    public String getType() {
+        String typ = dtype;
+        return dtype;
     }
+
+    public void setValue(String value){
+        this.value=value;
+    }
+
+    public String getValue() {
+        String mvalue = ""+value;
+        return mvalue;
+    }
+
     @Override
     public String toString() {
         return name;

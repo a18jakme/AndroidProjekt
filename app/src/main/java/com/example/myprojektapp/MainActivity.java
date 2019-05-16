@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE2 = "com.example.myprojektapp.extra.MESSAGE2";
     public static final String EXTRA_MESSAGE3 = "com.example.myprojektapp.extra.MESSAGE3";
     public static final String EXTRA_MESSAGE4 = "com.example.myprojektapp.extra.MESSAGE4";
+    public static final String EXTRA_MESSAGE5 = "com.example.myprojektapp.extra.MESSAGE5";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,8 +56,9 @@ public class MainActivity extends AppCompatActivity {
                 String stable= discadapter.getItem(position).getStable();
                 String price= discadapter.getItem(position).getCost();
                 String company= discadapter.getItem(position).getCompany();
-                String type= discadapter.getItem(position).getCategory();
-                message(view, discname, stable, price, company, type);
+                String type= discadapter.getItem(position).getType();
+                String value=discadapter.getItem(position).getValue();
+                message(view, discname, stable, price, company, type, value);
             }
         });
     }
@@ -159,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
 
             super.onPostExecute(o);
             Log.d("jacke","DataFetched:"+o);
-            //bergsadapter.clear();
 
             try {
 
@@ -167,15 +168,13 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < json1.length(); i++){
                     JSONObject a = json1.getJSONObject(i);
                     Disc n = new Disc(a.getString("name"));
+                    n.setStable(a.getString("location"));
                     n.setCost(a.getInt("cost"));
-                    n.setLocation(a.getString("location"));
-                    n.setCategory(a.getString("category"));
                     n.setCompany(a.getString("company"));
-
-
+                    n.setType(a.getString("category"));
+                    n.setValue(a.getString("auxdata"));
                     discadapter.add(n);
 
-                    Log.d("jacke11",n.toString());
 
                 }
 
@@ -185,13 +184,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    public void message (View view, String discname, String stable, String price, String company, String type){
+    public void message (View view, String discname, String stable, String price, String company, String type, String value){
         Intent iNtent = new Intent(getApplicationContext(), ActivityDetail.class);
         iNtent.putExtra(EXTRA_MESSAGE, discname);
         iNtent.putExtra(EXTRA_MESSAGE1, stable);
         iNtent.putExtra(EXTRA_MESSAGE2, price);
         iNtent.putExtra(EXTRA_MESSAGE3, company);
         iNtent.putExtra(EXTRA_MESSAGE4, type);
+        iNtent.putExtra(EXTRA_MESSAGE5, value);
+
         startActivity(iNtent);
     }
 }

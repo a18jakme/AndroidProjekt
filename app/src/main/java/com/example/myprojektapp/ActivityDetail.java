@@ -27,11 +27,12 @@ public class ActivityDetail extends AppCompatActivity {
         String price = intent.getStringExtra(MainActivity.EXTRA_MESSAGE2);
         String company = intent.getStringExtra(MainActivity.EXTRA_MESSAGE3);
         String type = intent.getStringExtra(MainActivity.EXTRA_MESSAGE4);
+        String value = intent.getStringExtra(MainActivity.EXTRA_MESSAGE5);
         Log.d("jacke", discname);
         Log.d("jacke", stable);
         Log.d("jacke", price);
         Log.d("jacke", company);
-        Log.d("jacke", type);
+        Log.d("jackejacke", type);
 
         TextView dname =findViewById(R.id.DiscView);
         dname.setText(discname);
@@ -43,6 +44,8 @@ public class ActivityDetail extends AppCompatActivity {
         dcompany.setText("Företag:" +company);
         TextView dstable =findViewById(R.id.stableview);
         dstable.setText("Stabilitet: "+stable);
+        TextView dinfostable =findViewById(R.id.infoView);
+        dinfostable.setText(value);
 
         ImageView bild1=findViewById(R.id. bild);
 
